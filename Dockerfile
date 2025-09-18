@@ -4,7 +4,11 @@ FROM alpine:latest AS builder
 RUN apk add --update alpine-sdk \
     openssl-dev \
     zlib-dev \
-    && apk add --no-cache git \
+    git \
+    build-base \
+    openssl-static \
+    zlib-static \
+    libffi-dev \
     && git clone https://github.com/giltene/wrk2.git \
     && cd wrk2 \
     && CFLAGS="-O2 -static" LDFLAGS="-static" make \
