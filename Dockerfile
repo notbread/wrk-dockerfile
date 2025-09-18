@@ -3,6 +3,8 @@ FROM alpine:latest AS builder
 
 RUN apk add --update build-base \
   openssl-dev \
+  libgcrypt-static \
+  openssl-libs-static \
   zlib-dev \
   musl-dev \
   git
