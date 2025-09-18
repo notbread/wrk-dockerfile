@@ -5,10 +5,7 @@ RUN apk add --update alpine-sdk \
     openssl-dev \
     zlib-dev \
     git \
-    build-base \
     openssl-static \
-    zlib-static \
-    libffi-dev \
     && git clone https://github.com/giltene/wrk2.git \
     && cd wrk2 \
     && CFLAGS="-O2 -static" LDFLAGS="-static" make \
