@@ -8,9 +8,9 @@ RUN apk add --update build-base \
   git
 RUN git clone https://github.com/giltene/wrk2.git \
   && cd wrk2 \
-  && CFLAGS="-O2 -static" make
+  && CFLAGS="-O2 -static" LDFLAGS="-static"  make
 #RUN CFLAGS="-O2 -static" LDFLAGS="-static" make
-RUN mv wrk /bin/
+RUN mv /wrk2/wrk /bin/
 
 # Runtime stage
 FROM alpine:latest
