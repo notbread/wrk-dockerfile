@@ -5,6 +5,9 @@ RUN apk add --update build-base \
   openssl-dev \
   libgcrypt-static \
   openssl-libs-static \
+  libstdc++ \
+  libffi-dev \
+  g++ \
   zlib-dev \
   musl-dev \
   git
