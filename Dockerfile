@@ -7,7 +7,7 @@ RUN apk add --update alpine-sdk \
     && apk add --no-cache git \
     && git clone https://github.com/giltene/wrk2.git \
     && cd wrk2 \
-    && make \
+    && CFLAGS="-O2 -static" LDFLAGS="-static" make \
     && mv wrk /bin/
 
 # Runtime stage
