@@ -1,7 +1,14 @@
 # Build stage
 FROM alpine:latest AS builder
 
-RUN apk add --update alpine-sdk openssl-dev && apk add --no-cache git && git clone https://github.com/giltene/wrk2.git && cd wrk2 && make && mv wrk /bin/
+RUN apk add --update alpine-sdk \
+    openssl-dev \
+    zlib-dev \
+    && apk add --no-cache git \
+    && git clone https://github.com/giltene/wrk2.git \
+    && cd wrk2 \
+    && make \
+    && mv wrk /bin/
 
 # Runtime stage
 FROM alpine:latest
