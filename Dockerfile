@@ -4,11 +4,12 @@ FROM alpine:latest AS builder
 RUN apk add --update build-base \
   openssl-dev \
   zlib-dev \
+  musl-dev \
   git
 RUN git clone https://github.com/giltene/wrk2.git \
   && cd wrk2
 #RUN CFLAGS="-O2 -static" LDFLAGS="-static" make
-RUN LDFLAGS="-static" make
+RUN CFLAGS="-O2 -static" make
 RUN mv wrk /bin/
 
 # Runtime stage
