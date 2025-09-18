@@ -7,7 +7,8 @@ RUN apk add --update build-base \
   git
 RUN git clone https://github.com/giltene/wrk2.git \
   && cd wrk2
-RUN CFLAGS="-O2 -static" LDFLAGS="-static" make
+#RUN CFLAGS="-O2 -static" LDFLAGS="-static" make
+RUN LDFLAGS="-static" make
 RUN mv wrk /bin/
 
 # Runtime stage
