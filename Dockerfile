@@ -3,8 +3,6 @@ FROM alpine:latest AS builder
 
 RUN apk add --update build-base \
   openssl-dev \
-  libgcrypt-static \
-  openssl-libs-static \
   zlib-dev \
   git
 RUN git clone https://github.com/giltene/wrk2.git \
@@ -15,6 +13,8 @@ RUN mv /wrk2/wrk /bin/
 
 # Runtime stage
 FROM alpine:latest
+
+RUN apk add --no-cache libgcc
 
 # Copy the built binary from builder stage
 COPY --from=builder /bin/wrk /usr/local/bin/wrk
